@@ -170,7 +170,7 @@ class FireAuthAdm {
 
   /*************************************************
    * @description Adm 유저 정보 업데이트
-   * @property {bodyData} => 관리자 삭제에 필요한 정보
+   * @property {bodyData} => 관리자 업데이트에 필요한 정보
    * * bodyData = {
    *  uid : 
    *  pw :

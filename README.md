@@ -1,10 +1,10 @@
-# api-userauth
+# api-fireauthadmin
 
-* Github 주소 => [링크](https://github.com/BazerHanMinSu/api-userauth#1-loginid-pw)
+* Github 주소 => [링크](https://github.com/BazerHanMinSu/api-fireauthadmin)
 
 =============
 
-회원관리 및 인증에 필요한 기능들을 모아놓은 고객 페이지용 class와 관리자 페이지용 class
+회원관리 및 인증에 필요한 기능들을 모아놓은 관리자 페이지용 class
 
 > updated at 2018-7-29
 ***
@@ -19,21 +19,9 @@
 
 ## 1. api 메소드 구성
 
-### (1) UserAuth.js
->일반 및 연동(구글, 페이스북 등) 회원 인증 기능을 가진 class (주로 일반 웹페이지용)
-+ fbLogin
-+ googleLogin
-+ login
-+ signUp
-+ cancelAccount
-+ cancelAccountAuth
-+ reAuth
-+ checkId
-+ verifyUser
-+ resetPw
+### FireAuthAdm
 
-### (2) AdmAuth.js
->일반 회원 인증 기능을 가진 class (주로 관리자용)
+>관리자 인증 기능을 가진 class 
 + login
 + register
 + cancelAccount
@@ -62,8 +50,7 @@ let config = {
   messagingSenderId: "53964943217"
 };
 
-// admAuth도 동일
-let userAuth = new userAuth(server, appName, config);
+let FireAuthAdm = new FireAuthAdm(server, appName, config);
 ```
 
 + server 
@@ -106,37 +93,15 @@ async login(id, pw){
 >id : 아이디(이메일), pw : 비밀번호
 
 
-### 2. googleLogin()
 
-구글 연동 로그인
+### 2. register(bodyData)
 
-### 3. fbLogin()
-
-페이스북 연동 로그인
-
-### 4. signUp(bodyData)
-
-회원가입(일반, 연동 통합)
+회원가입
 
 >bodyData : 회원가입 POST에 쓰일 body 객체. 기본 객체 구성은 다음과 같으며 프로젝트 별 요구사항에 따라 바뀔 수 있음
 
->!! 연동 로그인의 경우 id와 pw는 기입할 필요가 없음(해당 값에 null을 삽입하여도 무관)
-
 ```javascript
-// UserAuth
-let bodyData = {
-  user: {
-    id        : tmp,
-    user_name : tmp,
-    user_type : tmp,
-  },
-  user_auth: {
-    typ_login : tmp,
-    pw        : tmp,
-  },
-}  
 
-// AdmAuth
 let bodyData = {
   adm: {
     id        : tmp,
@@ -148,8 +113,9 @@ let bodyData = {
     pw        : tmp,
   },
 }   
+
 ```
-### 5. cancelAccount(bodyData)
+### 3. cancelAccount(bodyData)
 
 계정 탈퇴(일반)
 
@@ -163,44 +129,43 @@ let bodyData = {
 }
 ```
 
-### 6. cancelAccountAuth(bodyData)
+### 4. reAuth(id, pw, typ_login)
 
-계정 탈퇴(연동)
-
->bodyData : 탈퇴에 필요한 body 객체.
-
-```javascript
-let bodyData = {
-  uid      : tmp,
-  pid_user : tmp,
-}
-```
-
-### 7. reAuth(id, pw, typ_login)
-
-재인증(일반, 연동 통합)
+재인증
 
 >id : 아이디(이메일), pw : 비밀번호, typ_login(로그인 타입)
 
-> !! 연동 계정일 경우에는 pw값은 입력할 필요가 없음
-
-### 8. checkId(id)
+### 5. checkId(id)
 
 아이디 중복검사
 
 >id : 아이디(이메일)
 
-### 9. resetPw(email)
+### 6. deleteAdm(bodyData)
 
-비밀번호 재설정 메일 발송
+마스터 관리자가 다른 관리자들을 삭제
 
->email : 이메일
+>bodyData : 관리자 삭제에 필요한 bodyData
 
-### 10. verifyUser(id, pw)
+```javascript
+let bodyData = {
+  uid : tmp,
+  pid : tmp,
+}
+```
 
-이메일 인증을 위한 메일 전송
+### 7. updateAdm(id, pw)
 
->id : 이메일, pw : 비밀번호
+마스터 관리자가 다른 관리자들을 업데이트 (현재는 비밀번호만)
+
+>bodyData : 관리자 업데이트에 필요한 bodyData
+
+```javascript
+let bodyData = {
+  uid : tmp,
+  pw  : tmp,
+}
+```
 
 ***
 
@@ -208,4 +173,4 @@ let bodyData = {
 
 2018-7-25 => 첫 버전 업로드
 2018-7-29 => README 목차 및 (2).4 회원가입 부분 설명 수정
-2018-8-02 => README 수정 및 폴더 생성하여 안에 수정된 js파일과 fetch파일 생성
+2018-8-02 => README 수정 및 수정된 js파일과 utils파일 생성
