@@ -1,12 +1,18 @@
 # api-fireauthadmin
 
-* Github 주소 => [링크](https://github.com/BazerHanMinSu/api-fireauthadmin)
-
-=============
-
 회원관리 및 인증에 필요한 기능들을 모아놓은 관리자 페이지용 class
 
+* !! Github 주소 => [링크](https://github.com/BazerHanMinSu/api-fireauthadmin)
+
 > updated at 2018-8-2
+
+| 파일명 | 설명 |
+| ------ | ----------- |
+| FireAuthAdm.js | API 파일 |
+| FireAuthAdmUtils.js | API 파일에만 쓰이는 util 함수 모음 |
+| Index.js | fb-component에서 시현을 위한 파일 |
+| README.md | 설명 파일 |
+
 ***
 
 
@@ -19,7 +25,7 @@
 
 ## 1. api 메소드 구성
 
-### FireAuthAdm
+### FireAuthAdm.js
 
 >관리자 인증 기능을 가진 class 
 + login
@@ -92,12 +98,16 @@ async login(id, pw){
 
 >id : 아이디(이메일), pw : 비밀번호
 
+__(return)__
+>성공 : 성공 문구
 
+>실패 : adm, adm_auth 등의 정보가 담긴 객체 
 
 ### 2. register(bodyData)
 
 회원가입
 
+__(parameter)__
 >bodyData : 회원가입 POST에 쓰일 body 객체. 기본 객체 구성은 다음과 같으며 프로젝트 별 요구사항에 따라 바뀔 수 있음
 
 ```javascript
@@ -113,12 +123,18 @@ let bodyData = {
     pw        : tmp,
   },
 }   
-
 ```
+
+__(return)__
+>성공 : 성공 문구
+
+>실패 : {status : 에러코드, results : 에러메세지}
+
 ### 3. cancelAccount(bodyData)
 
 계정 탈퇴(일반)
 
+__(parameter)__
 >bodyData : 탈퇴에 필요한 body 객체.
 
 ```javascript
@@ -128,23 +144,35 @@ let bodyData = {
   pid_user : tmp,
 }
 ```
+__(return)__
+>성공 : 성공 문구
+
+>실패 : {status : 에러코드, results : 에러메세지}
 
 ### 4. reAuth(id, pw, typ_login)
 
 재인증
 
+__(parameter)__
 >id : 아이디(이메일), pw : 비밀번호, typ_login(로그인 타입)
 
 ### 5. checkId(id)
 
 아이디 중복검사
 
+__(parameter)__
 >id : 아이디(이메일)
+
+__(return)__
+>성공 : 사용 가능
+
+>실패 : {status : 에러코드, results : 에러메세지}
 
 ### 6. deleteAdm(bodyData)
 
 마스터 관리자가 다른 관리자들을 삭제
 
+__(parameter)__
 >bodyData : 관리자 삭제에 필요한 bodyData
 
 ```javascript
@@ -154,10 +182,16 @@ let bodyData = {
 }
 ```
 
+__(return)__
+>성공 : 성공 문구
+
+>실패 : {status : 에러코드, results : 에러메세지}
+
 ### 7. updateAdm(id, pw)
 
 마스터 관리자가 다른 관리자들을 업데이트 (현재는 비밀번호만)
 
+__(parameter)__
 >bodyData : 관리자 업데이트에 필요한 bodyData
 
 ```javascript
@@ -166,6 +200,11 @@ let bodyData = {
   pw  : tmp,
 }
 ```
+
+__(return)__
+>성공 : 성공 문구
+
+>실패 : {status : 에러코드, results : 에러메세지}
 
 ***
 
