@@ -47,16 +47,7 @@
 let server = "http://192.168.0.15:7410";
 let appName = "test_module";
 
-let config = {
-  apiKey: "AIzaSyCZPJ7Qfeo7RPhnmsLfY_dhUJF32QqK_aA",
-  authDomain: "user-mange-test.firebaseapp.com",
-  databaseURL: "https://user-mange-test.firebaseio.com",
-  projectId: "user-mange-test",
-  storageBucket: "",
-  messagingSenderId: "53964943217"
-};
-
-let FireAuthAdm = new FireAuthAdm(server, appName, config);
+let FireAuthAdm = new FireAuthAdm(server, appName);
 ```
 
 + server 

@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 import {_Fetch, setCookie} from './FireAuthAdmUtils';
 
 /**
@@ -18,12 +17,8 @@ import {_Fetch, setCookie} from './FireAuthAdmUtils';
 
 
 class FireAuthAdm {
-  constructor(server, appName, config){
+  constructor(server, appName){
     
-    // firebase 중복 초기화 방지
-    if(firebase.apps.length === 0){
-      firebase.initializeApp(config);
-    }
     this.server = server;
 
     this.getData(server + '/' + appName + '/restapi/admin_auth_desc')
