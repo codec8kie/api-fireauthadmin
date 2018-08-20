@@ -11,6 +11,7 @@ import {_Fetch, setCookie} from './FireAuthAdmUtils';
  * @method checkId       => 아이디 중복 확인
  * @method resetPw       => 비밀번호 재설정
  * 
+ * @method getAdm        => 관리자 리스트 불러오기
  * @method deleteAdm     => 관리자 삭제
  * @method updateAdm     => 관리자 정보 수정
  */
@@ -43,7 +44,8 @@ class FireAuthAdm {
       this.RESET_PW       = obj ? obj.adm_resetpw : null;
       this.AUTH_BY_PW     = obj ? obj.adm_check_user : null;
       this.DELETE_ADM     = obj ? obj.adm_delete_admin : null;     
-      this.UPDATE_ADM     = obj ? obj.adm_update_admin : null;     
+      this.UPDATE_ADM     = obj ? obj.adm_update_admin : null;
+      this.GET_ADM        = obj ? obj.adm_get_admin : null;     
       
       
     } catch (error) {
@@ -141,6 +143,24 @@ class FireAuthAdm {
     return res;
 
   }
+
+
+
+
+
+
+    /*************************************************
+   * @description 관리자 목록 불러오기
+   * @property {}
+   *************************************************/
+  async getAdm(){
+
+    let res = await _Fetch(this.GET_ADM, '');
+
+    return res;
+
+  }
+
 
 
 
