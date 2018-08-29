@@ -13,6 +13,7 @@ import {_Fetch, setCookie} from './FireAuthAdmUtils';
  * 
  * @method getAdm        => 관리자 리스트 불러오기
  * @method deleteAdm     => 관리자 삭제
+ * @method deleteUser    => 일반유저 삭제
  * @method updateAdm     => 관리자 정보 수정
  */
 
@@ -44,6 +45,7 @@ class FireAuthAdm {
       this.RESET_PW       = obj ? obj.adm_resetpw : null;
       this.AUTH_BY_PW     = obj ? obj.adm_check_user : null;
       this.DELETE_ADM     = obj ? obj.adm_delete_admin : null;     
+      this.DELETE_USER    = obj ? obj.adm_delete_user : null;     
       this.UPDATE_ADM     = obj ? obj.adm_update_admin : null;
       this.GET_ADM        = obj ? obj.adm_get_admin : null;     
       
@@ -181,6 +183,25 @@ class FireAuthAdm {
   }
 
 
+
+
+  /*************************************************
+   * @description 일반 유저 삭제
+   * @property {bodyData} => 일반유저 삭제에 필요한 정보
+   * bodyData = {
+   *  uid : 
+   *  pid :
+   * }
+   *************************************************/
+  async deleteUser(bodyData){
+
+    let res = await _Fetch(this.DELETE_USER, '', bodyData)
+
+    return res;
+
+  }
+
+  
 
 
   /*************************************************

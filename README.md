@@ -4,7 +4,7 @@
 
 * !! Github 주소 => [링크](https://github.com/BazerHanMinSu/api-fireauthadmin)
 
-> updated at 2018-8-2
+> recently updated at 2018-8-29
 
 | 파일명 | 설명 |
 | ------ | ----------- |
@@ -35,6 +35,7 @@
 + checkId
 + resetPw
 + deleteAdm
++ deleteUser
 + updateAdm
 
 
@@ -173,12 +174,26 @@ let bodyData = {
 }
 ```
 
+### 7. deleteUser(bodyData)
+
+관리자가 일반유저 삭제
+
+__(parameter)__
+>bodyData : 일반유저 삭제에 필요한 bodyData
+
+```javascript
+let bodyData = {
+  uid : tmp,
+  pid : tmp,
+}
+```
+
 __(return)__
 >성공 : 성공 문구
 
 >실패 : {status : 에러코드, results : 에러메세지}
 
-### 7. updateAdm(id, pw)
+### 8. updateAdm(id, pw)
 
 마스터 관리자가 다른 관리자들을 업데이트 (현재는 비밀번호만)
 
@@ -206,3 +221,5 @@ __(return)__
 2018-7-29 => README 목차 및 (2).4 회원가입 부분 설명 수정
 
 2018-8-02 => README 수정 및 수정된 js파일과 utils파일 생성
+
+2018-8-29 => 7.delteUser 추가 및 README 갱신
