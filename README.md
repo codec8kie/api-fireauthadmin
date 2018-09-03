@@ -4,7 +4,7 @@
 
 * !! Github 주소 => [링크](https://github.com/BazerHanMinSu/api-fireauthadmin)
 
-> recently updated at 2018-8-29
+> recently updated at 2018-9-3
 
 | 파일명 | 설명 |
 | ------ | ----------- |
@@ -44,6 +44,7 @@
 ### (1). 인스턴스 선언
 
 ```javascript
+import FireAuthAdm from '../../common/FireAuthAdm';
 
 let server = "http://192.168.0.15:7410";
 let appName = "test_module";
