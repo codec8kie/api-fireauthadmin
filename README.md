@@ -30,10 +30,10 @@
 >관리자 인증 기능을 가진 class 
 + login
 + register
-+ cancelAccount
 + reAuth
 + checkId
 + resetPw
++ admAdm
 + deleteAdm
 + deleteUser
 + updateAdm
@@ -122,33 +122,15 @@ __(return)__
 
 >실패 : {status : 에러코드, results : 에러메세지}
 
-### 3. cancelAccount(bodyData)
 
-계정 탈퇴(일반)
-
-__(parameter)__
->bodyData : 탈퇴에 필요한 body 객체.
-
-```javascript
-let bodyData = {
-  pw       : tmp,
-  uid      : tmp,
-  pid_user : tmp,
-}
-```
-__(return)__
->성공 : 성공 문구
-
->실패 : {status : 에러코드, results : 에러메세지}
-
-### 4. reAuth(id, pw, typ_login)
+### 3. reAuth(id, pw, typ_login)
 
 재인증
 
 __(parameter)__
 >id : 아이디(이메일), pw : 비밀번호, typ_login(로그인 타입)
 
-### 5. checkId(id)
+### 4. checkId(id)
 
 아이디 중복검사
 
@@ -160,7 +142,31 @@ __(return)__
 
 >실패 : {status : 에러코드, results : 에러메세지}
 
-### 6. deleteAdm(bodyData)
+### 5. resetPw(email)
+
+관리자 비밀번호 재설정
+
+__(parameter)__
+>email : 아이디(이메일)
+
+__(return)__
+>성공 : 사용 가능
+
+>실패 : {status : 에러코드, results : 에러메세지}
+
+### 6. getAdm()
+
+관리자 목록 불러오기
+
+__(parameter)__
+>-
+
+__(return)__
+>성공 : 사용 가능
+
+>실패 : {status : 에러코드, results : 에러메세지}
+
+### 7. deleteAdm(bodyData)
 
 마스터 관리자가 다른 관리자들을 삭제
 
@@ -174,7 +180,7 @@ let bodyData = {
 }
 ```
 
-### 7. deleteUser(bodyData)
+### 8. deleteUser(bodyData)
 
 관리자가 일반유저 삭제
 
@@ -193,7 +199,7 @@ __(return)__
 
 >실패 : {status : 에러코드, results : 에러메세지}
 
-### 8. updateAdm(id, pw)
+### 9. updateAdm(id, pw)
 
 마스터 관리자가 다른 관리자들을 업데이트 (현재는 비밀번호만)
 
@@ -223,3 +229,5 @@ __(return)__
 2018-8-02 => README 수정 및 수정된 js파일과 utils파일 생성
 
 2018-8-29 => 7.delteUser 추가 및 README 갱신
+
+2018-9-3  => README 수정
