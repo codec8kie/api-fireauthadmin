@@ -63,6 +63,7 @@ api 정보를 가져올 서버의 앱 이름
 + config
 
 firebase 설정 객체
+
 ### (2). 사용되는 쿠키 정보
 
 ```javascript
@@ -251,4 +252,4 @@ __(return)__
 
 2018-9-3  => README 수정
 
-2018-9-3  => FireAuthAdmUtils 수정 및  README 수정
+2018-9-4  => FireAuthAdmUtils 수정 및  README 수정
