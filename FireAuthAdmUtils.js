@@ -4,6 +4,14 @@
 // } 
 export const _Fetch = (api, query = '', body) => {
   //_Fetch -> url은 host + url로 완성된 상태로 넣어야함
+  if(api === undefined){
+    
+    return {
+      status : 7777,
+      results : "FireAuhAdm api 정보가 존재하지 않습니다.",
+    }
+  }
+  
   if(api.method === "GET"){
     return _getFetch(api.url + query);
   }
