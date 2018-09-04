@@ -64,6 +64,17 @@ api 정보를 가져올 서버의 앱 이름
 
 firebase 설정 객체
 ### (2). 사용되는 쿠키 정보
+
+```javascript
+
+  // 로그인 후 유저정보를 쿠키에 담기
+  setCookie('admAuth',JSON.stringify(res))
+
+  // 쿠키정보 불러오기
+  JSON.parse(getCookie('admAuth'))
+
+```
+
 + 내부적으로 로그인 정보를 추출할 쿠키명이 'admAuth'로 지정되어있음
 
 + 따라서 1. 사용자가 로그인 후 받아오는 유저정보 데이터를 위와 같이 'admAuth'인 쿠키명으로 저장하거나
